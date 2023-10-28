@@ -9,7 +9,7 @@
 
         </div>
         <div class=" text-black mt-3" v-if="btc">
-            {{ btc }}
+            <!-- {{ btc }} -->
         </div>
         <div class="mt-2">
             <BarChart />
@@ -28,12 +28,13 @@ export default {
         }
     },
     mounted() {
+        // const timestamps = [1625097600, 1625184000, 1625270400];
         this.getDataFeed("BTC")
     },
     methods: {
         async getDataFeed(symbol) {
             this.btc = await GetDataFeed(symbol);
-            
+            console.log(this.btc)
         }
     }
 }

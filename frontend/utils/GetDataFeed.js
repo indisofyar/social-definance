@@ -1,6 +1,7 @@
 const FLARE_PACKAGE = "@flarenetwork/flare-periphery-contract-artifacts";
 const FLARE_RPC = "https://flare-api.flare.network/ext/C/rpc";
 
+
 async function GetDataFeed(_symbol) {
     console.log(`Retrieving current price of ${_symbol}...`);
 
@@ -15,7 +16,7 @@ async function GetDataFeed(_symbol) {
         ethers = await import("https://esm.run/ethers@6.3");
         flare = await import(`https://esm.run/${FLARE_PACKAGE}`);
     }
-
+    console.log(flare)
     // Node to submit queries to.
     const provider = new ethers.JsonRpcProvider(FLARE_RPC);
 
@@ -33,15 +34,23 @@ async function GetDataFeed(_symbol) {
         flare.nameToAbi("FtsoRegistry", "flare").data,
         provider);
 
+    console.log(ftsoRegistry)
     // 4. Get latest price
     const [_price, _timestamp, _decimals] =
         await ftsoRegistry["getCurrentPriceWithDecimals(string)"](_symbol);
-
+    
+    // const [_ftsoAssetIndex] = await ftsoRegistry["getFtsoIndex(string)"](_symbol);
+    const [_ftso] = await ftsoRegistry["getFtsoBySymbol(string)"](_symbol);
+    // const [_ftsoHistory] = await ftsoRegistry["getFtsoHistory(uint256)"](_ftsoAssetIndex);
+    
     const response = {
         price: Number(_price) / Math.pow(10, Number(_decimals)),
-        date: new Date(Number(_timestamp) * 1000)
+        date: new Date(Number(_timestamp) * 1000),
+        // ftso: _ftso,
+        // ftsoHistory: _ftsoHistory,
     };
-    return response
+
+    return response;
 }
 
 export default GetDataFeed;
