@@ -3,7 +3,11 @@ export default {
   darkMode: ['class', '[data-mode="dark"]'],
   content: ["./**/*.vue"],
   theme: {
-    extend: {},
+    extend: {
+      purple: {
+        600: '#4A21EF',
+      }
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

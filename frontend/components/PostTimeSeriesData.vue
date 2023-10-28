@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-    name: 'Post',
+    name: 'PostTimeSeries',
     props: ['profileImg', 'title', 'user', 'content']
 }
 </script>

@@ -18,6 +18,9 @@ module.exports = {
   solidity: "0.8.19",
   networks: {
     hardhat: {
+      forking: {
+        url: 'https://flare-api.flare.network/ext/C/rpc',
+      },
     },
     coston: {
       url: "https://coston-api.flare.network/ext/bc/C/rpc",
