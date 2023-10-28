@@ -8,8 +8,8 @@
             </div>
 
         </div>
-        <div class=" text-black mt-3">
-            {{ content }}
+        <div class=" text-black mt-3" v-if="btc">
+            {{ btc }}
         </div>
         <div class="mt-2">
             <BarChart />
@@ -17,8 +17,24 @@
     </div>
 </template>
 <script>
+import GetDataFeed from '@/utils/GetDataFeed'
+
 export default {
     name: 'PostTimeSeries',
-    props: ['profileImg', 'title', 'user', 'content']
+    props: ['profileImg', 'title', 'user', 'content'],
+    data() {
+        return {
+            btc: null
+        }
+    },
+    mounted() {
+        this.getDataFeed("BTC")
+    },
+    methods: {
+        async getDataFeed(symbol) {
+            this.btc = await GetDataFeed(symbol);
+            
+        }
+    }
 }
 </script>
