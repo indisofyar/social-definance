@@ -10,23 +10,31 @@
                     <div class="text-center">{{ c.name }}</div>
                 </div>
             </div>
-            <button class="btn" @click="goNext">Confirm</button>
+            <button class="btn" @click="goNext" v-if="this.selectedCoins.length > 2">Confirm</button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    methods: {
-        goNext() {
+    computed: {
+        selectedCoins() {
+            const vm = this;
             let arr = []
-            for (let i = 0; i < this.cryptos.length; i++) {
-                if (this.cryptos[i].selected) {
-                    arr.push(this.cryptos[i].name)
+            for (let i = 0; i < vm.cryptos.length; i++) {
+                if (vm.cryptos[i].selected) {
+                    arr.push(vm.cryptos[i].name)
                 }
             }
-            this.$emit('next', arr);
-            this.$router.replace('/')
+            return arr;
+        }
+
+    },
+    methods: {
+        goNext() {
+            const vm = this;
+            vm.$emit('setCoin', this.arr);
+            vm.$router.replace('/');
         }
     },
     data() {
@@ -35,6 +43,9 @@ export default {
                 { name: 'BTC', selected: false, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/800px-Bitcoin.svg.png' },
                 { name: 'ETH', selected: false, img: 'https://logowik.com/content/uploads/images/ethereum-eth7803.logowik.com.webp' },
                 { name: 'XRP', selected: false, img: 'https://altcoinsbox.com/wp-content/uploads/2023/01/xrp-logo.jpg' },
+                { name: 'SOL', selected: false, img: 'https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png' },
+                { name: 'ADA', selected: false, img: 'https://seeklogo.com/images/C/cardano-ada-logo-4B6BADDB43-seeklogo.com.png' },
+
             ],
         }
     }
