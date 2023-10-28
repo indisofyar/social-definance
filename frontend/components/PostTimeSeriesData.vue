@@ -9,11 +9,11 @@
 
         </div>
         <div class=" text-black mt-3" >
-
+            {{ btc }}
             {{ timeSeries }}
         </div>
         <div class="mt-2">
-            <BarChart />
+            <LineChart />
         </div>
         <button class="btn" @click="getDataFeed('ETH')">ETH
         </button>
@@ -35,7 +35,7 @@ export default {
     },
     mounted() {
         // const timestamps = [1625097600, 1625184000, 1625270400];
-        // this.getDataFeed("BTC");
+        this.getDataFeed("BTC");
         this.getTimeSeriesData("BTC");
     },
     methods: {

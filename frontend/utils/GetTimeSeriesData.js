@@ -32,7 +32,6 @@ async function getTimeSeriesData(_symbol) {
         abiData,
         provider);
     const [_data] = await priceAnalyticsData["getLast5Prices(string)"](_symbol);
-    console.log(_data)
     // const [_ftsoHistory] = await ftsoRegistry["getFtsoHistory(uint256)"](_ftsoAssetIndex);
 
     const response = {
