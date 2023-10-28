@@ -8,8 +8,8 @@
             </div>
 
         </div>
-        <div class=" text-black mt-3" v-if="btc">
-            {{ btc }}
+        <div class=" text-black mt-3" >
+
             {{ timeSeries }}
         </div>
         <div class="mt-2">
@@ -35,7 +35,7 @@ export default {
     },
     mounted() {
         // const timestamps = [1625097600, 1625184000, 1625270400];
-        this.getDataFeed("BTC");
+        // this.getDataFeed("BTC");
         this.getTimeSeriesData("BTC");
     },
     methods: {

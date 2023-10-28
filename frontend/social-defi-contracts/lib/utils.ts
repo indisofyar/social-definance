@@ -2,7 +2,7 @@ import { setNonce } from "@nomicfoundation/hardhat-network-helpers";
 import { time } from '@openzeppelin/test-helpers';
 import BN from "bn.js";
 import hardhat, { ethers } from 'hardhat';
-import { FLARE_CONTRACT_REGISTRY_ADDRESS } from '../lib/constants';
+import { FLARE_CONTRACT_REGISTRY_ADDRESS } from './constants';
 import { FlareContractRegistryMockContract, FlareContractRegistryMockInstance } from '../typechain-types';
 const FlareContractRegistryMock: FlareContractRegistryMockContract = artifacts.require('FlareContractRegistryMock');
 
