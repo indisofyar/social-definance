@@ -6,7 +6,6 @@
                 <div class="font-bold text-lg">{{ title }}</div>
                 <div class="text-sm">{{ user }}</div>
             </div>
-
         </div>
         <div class=" text-black mt-3" >
             {{ btc }}
