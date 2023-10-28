@@ -10,6 +10,7 @@
         <div class=" text-black mt-3" >
             {{ btc }}
             {{ timeSeries }}
+            {{ counter }}
         </div>
         <div class="mt-2">
             <LineChart />
@@ -23,6 +24,7 @@
 import GetDataFeed from '@/utils/GetDataFeed'
 import getPriceAnalyticsLong from '~/utils/GetPriceAnalyticsLong';
 
+
 export default {
     name: 'PostTimeSeries',
     props: ['profileImg', 'title', 'user', 'content'],
@@ -34,8 +36,9 @@ export default {
     },
     mounted() {
         // const timestamps = [1625097600, 1625184000, 1625270400];
-        // this.getDataFeed("BTC");
+        this.getDataFeed("BTC");
         this.getTimeSeriesData("BTC");
+    
     },
     methods: {
         async getDataFeed(symbol) {
