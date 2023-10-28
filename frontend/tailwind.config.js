@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       purple: {
-        600: '#4A21EF',
+        600: '#4a21ef',
       }
     },
   },
