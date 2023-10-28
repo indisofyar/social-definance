@@ -37,16 +37,19 @@ contract PriceAnalyticsLong {
             // We don't yet know the full price for epoch
             epoch -= 1;
         }
-        uint256 num = 5;
+
+        uint256 num = 10;
         prices = new uint256[](num);
         for (uint256 i = 0; i < num; i++) {
             prices[i] = ftso.getEpochPrice(epoch - i);
         }
 
         uint256 sum = 0;
+
         for (uint256 i = 0; i < num; i++) {
             sum += prices[i];
         }
+
         // We incure some rounding error here, but it's not a big deal
         mean = sum / num;
         for (uint256 i = 0; i < num; i++) {
