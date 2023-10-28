@@ -10,6 +10,7 @@
         </div>
         <div class=" text-black mt-3" v-if="btc">
             {{ btc }}
+            {{ timeSeries }}
         </div>
         <div class="mt-2">
             <BarChart />
@@ -21,23 +22,29 @@
 
 <script>
 import GetDataFeed from '@/utils/GetDataFeed'
+import getTimeSeriesData from '~/utils/GetTimeSeriesData'
 
 export default {
     name: 'PostTimeSeries',
     props: ['profileImg', 'title', 'user', 'content'],
     data() {
         return {
-            btc: null
+            btc: null,
+            timeSeries: null,
         }
     },
     mounted() {
         // const timestamps = [1625097600, 1625184000, 1625270400];
-        this.getDataFeed("BTC")
+        this.getDataFeed("BTC");
+        this.getTimeSeriesData("BTC");
     },
     methods: {
         async getDataFeed(symbol) {
             this.btc = await GetDataFeed(symbol);
             console.log(this.btc)
+        },
+        async getTimeSeriesData(symbol){
+            this.timeSeries = await getTimeSeriesData(symbol);
         }
     }
 }
