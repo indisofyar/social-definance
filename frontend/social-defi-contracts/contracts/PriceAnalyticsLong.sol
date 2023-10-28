@@ -20,7 +20,7 @@ contract PriceAnalyticsLong {
             uint256 variance
         )
     {
-        IFtsoRegistry ftsoRegistry = FlareContractsRegistryLibrary
+           IFtsoRegistry ftsoRegistry = FlareContractsRegistryLibrary
             .getFtsoRegistry();
 
         IFtso ftso = ftsoRegistry.getFtsoBySymbol(token);
@@ -40,22 +40,20 @@ contract PriceAnalyticsLong {
             revealPeriodSeconds
         ) {
             // We don't yet know the full price for epoch
-            epoch -= 2;
+            epoch -= 1;
         }
-        uint256 num = 5;
+        uint256 num = 10;
         prices = new uint256[](num);
         timestamps = new uint256[](num);
         for (uint256 i = 0; i < num; i++) {
-            prices[i] = ftso.getEpochPrice(epoch - 1);
-            timestamps[i] = epoch - 1;   
+            prices[i] = ftso.getEpochPrice(epoch - i);
+            timestamps[i] = epoch - i;
         }
 
         uint256 sum = 0;
-
         for (uint256 i = 0; i < num; i++) {
             sum += prices[i];
         }
-
         // We incure some rounding error here, but it's not a big deal
         mean = sum / num;
         for (uint256 i = 0; i < num; i++) {

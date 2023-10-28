@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtPage @set-coin="setCoin($event)" />
+      <NuxtPage @set-coin="setCoin($event)" :coins="coins" />
     </NuxtLayout>
   </div>
 </template>
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      coins: []
+      coins: ['XRP', 'ETH', 'BTC']
     }
   },
   methods:{

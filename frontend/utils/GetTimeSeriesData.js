@@ -27,17 +27,20 @@ async function getTimeSeriesData(_symbol) {
     const abiData = PriceAnalytics.abi
     // 2. Access the Contract Registry
     const priceAnalyticsData = new ethers.Contract(
-        "0x338a2ABa764C8D82afE918Ed2130FEb5500D16d4",
+        "0x315f623597a55cF174CFD3F46Ea758BDD3640740",
         abiData,
         provider);
 
         
-    const [_data] = await priceAnalyticsData["getLast5Prices(string)"](_symbol);
+    const [_prices, _timestamps, _mean, _variance] = await priceAnalyticsData["getLast5Prices(string)"](_symbol);
     // const [_ftsoHistory] = await ftsoRegistry["getFtsoHistory(uint256)"](_ftsoAssetIndex);
-    console.log('data')
-    console.log(_data)
+
+
     const response = {
-        data: _data.toString(),
+        prices: _prices.toString(),
+        timestamps: _timestamps.toString(),
+        mean: _mean.toString(),
+        variance: _variance,
 
     };
 

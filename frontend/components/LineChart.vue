@@ -1,5 +1,5 @@
 <template>
-    <Line :data="data" :options="options" v-if="data" />
+    <Line :data="data" :options="options" />
 </template>
   
 <script>
@@ -32,24 +32,26 @@ export default {
     components: {
         Line
     },
+    props: ['data'],
     data() {
         return {
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
-                        label: 'Data One',
-                        backgroundColor: '#f87979',
-                        data: [40, 39, 10, 40, 39, 80, 40]
-                    }
-                ]
-            },
+            // data: {
+            //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            //     datasets: [
+            //         {
+            //             label: 'Data One',
+            //             backgroundColor: '#f87979',
+            //             data: [40, 39, 10, 40, 39, 80, 40]
+            //         }
+            //     ]
+            // },
             options: {
                 responsive: true,
                 maintainAspectRatio: false
             },
         }
     },
+
 }
 </script>
   

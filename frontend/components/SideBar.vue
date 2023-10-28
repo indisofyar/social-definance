@@ -41,11 +41,11 @@ export default {
                href: '/',
                name: 'Dashboard'
             },
-            {
-               icon: '',
-               href: '/',
-               name: 'Chat'
-            },
+            // {
+            //    icon: '',
+            //    href: '/',
+            //    name: 'Chat'
+            // },
          ]
       }
    }
