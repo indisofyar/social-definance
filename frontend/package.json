@@ -31,6 +31,7 @@
     "@flarenetwork/flare-periphery-contract-artifacts": "^0.1.1",
     "chart.js": "^4.4.0",
     "ethers": "^6.8.0",
+    "firebase": "^10.5.2",
     "theme-change": "^2.5.0",
     "vue-chartjs": "^5.2.0"
   },
