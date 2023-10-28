@@ -34,20 +34,23 @@ async function GetDataFeed(_symbol) {
         flare.nameToAbi("FtsoRegistry", "flare").data,
         provider);
 
-    console.log(ftsoRegistry)
+
     // 4. Get latest price
     const [_price, _timestamp, _decimals] =
         await ftsoRegistry["getCurrentPriceWithDecimals(string)"](_symbol);
-    
-    // const [_ftsoAssetIndex] = await ftsoRegistry["getFtsoIndex(string)"](_symbol);
+
+    let _symbols = [_symbol]
+    console.log(await ftsoRegistry)
+    const [_ftsoAssetIndex] = await ftsoRegistry["getSupportedIndicesAndFtsos()"]();
     const [_ftso] = await ftsoRegistry["getFtsoBySymbol(string)"](_symbol);
     // const [_ftsoHistory] = await ftsoRegistry["getFtsoHistory(uint256)"](_ftsoAssetIndex);
-    
+        
     const response = {
         price: Number(_price) / Math.pow(10, Number(_decimals)),
         date: new Date(Number(_timestamp) * 1000),
-        // ftso: _ftso,
-        // ftsoHistory: _ftsoHistory,
+        ftso: _ftso,
+        supportedIndices: _ftsoAssetIndex.toString(),
+    
     };
 
     return response;
