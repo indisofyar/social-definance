@@ -3,9 +3,9 @@ import { ethers } from "ethers";
 const FLARE_PACKAGE = "@flarenetwork/flare-periphery-contract-artifacts";
 const FLARE_RPC = "https://coston-api.flare.network/ext/bc/C/rpc";
 // import PriceAnalytics from '../PriceAnalytics.json';
-import PriceAnalytics from '../social-defi-contracts/artifacts/contracts/PriceAnalytics.sol/PriceAnalytics.json';
+import PriceAnalyticsLong from '../social-defi-contracts/artifacts/contracts/PriceAnalyticsLong.sol/PriceAnalyticsLong.json';
 
-async function getTimeSeriesData(_symbol) {
+async function getPriceAnalyticsLong(_symbol) {
     _symbol = 'test' + _symbol
     console.log(`Retrieving current price of ${_symbol}...`);
 
@@ -24,24 +24,27 @@ async function getTimeSeriesData(_symbol) {
     // Node to submit queries to.
     const provider = new ethers.JsonRpcProvider(FLARE_RPC);
     
-    const abiData = PriceAnalytics.abi
+    const abiData = PriceAnalyticsLong.abi
     // 2. Access the Contract Registry
     const priceAnalyticsData = new ethers.Contract(
-        "0x338a2ABa764C8D82afE918Ed2130FEb5500D16d4",
+        "0xF5AB4C9449CC288bB9106c18B6807f41F2caF79F",
         abiData,
         provider);
 
         
-    const [_data] = await priceAnalyticsData["getLast5Prices(string)"](_symbol);
+    const [_prices, _timestamps, _mean, _variance] = await priceAnalyticsData["getAnalyticHistory(string)"](_symbol);
     // const [_ftsoHistory] = await ftsoRegistry["getFtsoHistory(uint256)"](_ftsoAssetIndex);
     console.log('data')
-    console.log(_data)
+    console.log(_prices,_timestamps,_mean,_variance)
     const response = {
-        data: _data.toString(),
+        prices: _prices.toString(),
+        timestamps: _timestamps.toString(),
+        mean: _mean.toString(),
+        variance: _variance.toString(),
 
     };
 
     return response;
 }
 
-export default getTimeSeriesData;
+export default getPriceAnalyticsLong;

@@ -8,12 +8,17 @@ import {IFtso} from "@flarenetwork/flare-periphery-contracts/coston2/ftso/userIn
 import {FlareContractsRegistryLibrary} from "@flarenetwork/flare-periphery-contracts/coston2/util-contracts/ContractRegistryLibrary.sol";
 
 contract PriceAnalyticsLong {
-    function getLast5Prices(
+    function getAnalyticHistory(
         string memory token
     )
         public
         view
-        returns (uint256[] memory prices, uint256 mean, uint256 variance)
+        returns (
+            uint256[] memory prices,
+            uint256[] memory timestamps,
+            uint256 mean,
+            uint256 variance
+        )
     {
         IFtsoRegistry ftsoRegistry = FlareContractsRegistryLibrary
             .getFtsoRegistry();
@@ -35,13 +40,14 @@ contract PriceAnalyticsLong {
             revealPeriodSeconds
         ) {
             // We don't yet know the full price for epoch
-            epoch -= 1;
+            epoch -= 2;
         }
-
-        uint256 num = 10;
+        uint256 num = 5;
         prices = new uint256[](num);
+        timestamps = new uint256[](num);
         for (uint256 i = 0; i < num; i++) {
-            prices[i] = ftso.getEpochPrice(epoch - i);
+            prices[i] = ftso.getEpochPrice(epoch - 1);
+            timestamps[i] = epoch - 1;   
         }
 
         uint256 sum = 0;

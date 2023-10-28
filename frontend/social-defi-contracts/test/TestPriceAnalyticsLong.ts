@@ -79,8 +79,8 @@ describe('PriceAnalytics', async () => {
     })
 
     it("Should work", async () => {
-        const tx = await priceAnalytics.getLast5Prices("BTC")
-        console.log(tx)
+        const tx = await priceAnalytics.getAnalyticHistory("BTC")
+        console.log('Price analytics long results')
         console.log(tx["0"].map((x: any) => x.toString()))
         console.log(tx["1"].toString())
         console.log(tx["2"].toString())

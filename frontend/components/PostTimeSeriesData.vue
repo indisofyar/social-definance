@@ -21,7 +21,7 @@
 
 <script>
 import GetDataFeed from '@/utils/GetDataFeed'
-import getTimeSeriesData from '~/utils/GetTimeSeriesData'
+import getPriceAnalyticsLong from '~/utils/GetPriceAnalyticsLong';
 
 export default {
     name: 'PostTimeSeries',
@@ -34,7 +34,7 @@ export default {
     },
     mounted() {
         // const timestamps = [1625097600, 1625184000, 1625270400];
-        this.getDataFeed("BTC");
+        // this.getDataFeed("BTC");
         this.getTimeSeriesData("BTC");
     },
     methods: {
@@ -43,7 +43,7 @@ export default {
             console.log(this.btc)
         },
         async getTimeSeriesData(symbol){
-            this.timeSeries = await getTimeSeriesData(symbol);
+            this.timeSeries = await getPriceAnalyticsLong(symbol);
         }
     }
 }

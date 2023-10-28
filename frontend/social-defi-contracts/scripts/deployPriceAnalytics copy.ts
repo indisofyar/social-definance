@@ -1,7 +1,7 @@
 import "@nomicfoundation/hardhat-verify";
 import { artifacts, ethers, run } from 'hardhat';
 import { PriceAnalyticsLongContract } from '../typechain-types';
-const PriceAnalytics: PriceAnalyticsLongContract = artifacts.require('PriceAnalyticsLong');
+const PriceAnalyticsLong: PriceAnalyticsLongContract = artifacts.require('PriceAnalytics');
 
 
 async function main() {
@@ -10,13 +10,12 @@ async function main() {
     console.log("Deploying contracts with the account:", deployer.address);
 
     const args: any[] = []
-    const priceAnalytics = await PriceAnalytics.new(...args);
-    console.log("PriceAnalytics deployed to:", priceAnalytics.address);
-    
+    const priceAnalyticsLong = await PriceAnalyticsLong.new(...args);
+    console.log("PriceAnalyticsLong deployed to:", priceAnalyticsLong.address);
     try {
 
         const result = await run("verify:verify", {
-            address: priceAnalytics.address,
+            address: priceAnalyticsLong.address,
             constructorArguments: args,
         })
 
@@ -24,7 +23,7 @@ async function main() {
     } catch (e: any) {
         console.log(e.message)
     }
-    console.log("Deployed contract at:", priceAnalytics.address)
+    console.log("Deployed contract at:", priceAnalyticsLong.address)
 
 }
 main().then(() => process.exit(0))
