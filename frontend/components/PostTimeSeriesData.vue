@@ -9,13 +9,16 @@
 
         </div>
         <div class=" text-black mt-3" v-if="btc">
-            <!-- {{ btc }} -->
+            {{ btc }}
         </div>
         <div class="mt-2">
             <BarChart />
         </div>
+        <button class="btn" @click="getDataFeed('ETH')">ETH
+        </button>
     </div>
 </template>
+
 <script>
 import GetDataFeed from '@/utils/GetDataFeed'
 
