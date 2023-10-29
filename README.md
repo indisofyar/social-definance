@@ -35,6 +35,8 @@ The main contracts utilised is in /frontend/social-defi-contracts/contracts:
 
 3. /frontend/pages/profile.vue also calls apis on the coston networ to get transaction address history
 
+## Busines model
+The project aims to attract influential investors in the crypto space. Enabling full transparency of profit and loss helps one to show others that that they are a skilled investor. This enables them to gain social and business influence, helping them to attract job opportunities or opportunities to meet with others. The idea is is that they would be able to sell their time to meet with others through the platform, and SocialDefi would be able to take a fee from this transaction.
 
 
 
