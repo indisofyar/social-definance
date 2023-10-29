@@ -22,6 +22,7 @@
                <router-link :to="l.href"
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <img src="../assets/house.svg" v-if="l.name == 'Dashboard'" class="opacity-60">
+                  <img src="../assets/person.svg" v-if="l.name == 'Profile'" class="opacity-60">
                   <span class="ml-3">{{l.name}}</span>
                </router-link>
             </li>
@@ -40,6 +41,11 @@ export default {
                icon: '',
                href: '/',
                name: 'Dashboard'
+            },
+            {
+               icon: '',
+               href: '/profile',
+               name: 'Profile'
             },
             // {
             //    icon: '',

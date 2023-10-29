@@ -28,7 +28,6 @@ export default {
             }
             return arr;
         }
-
     },
     methods: {
         goNext() {

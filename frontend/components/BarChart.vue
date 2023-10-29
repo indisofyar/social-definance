@@ -18,8 +18,8 @@
     data() {
       return {
         chartData: {
-          labels: [ 'January', 'February', 'March' ],
-          datasets: [ { data: [40, 20, 12] } ]
+          labels: [ 'September', 'October', 'November' ],
+          datasets: [ {label: 'Profit', data: [1201, 1100, 1400], backgroundColor: '#4a21ef',} ]
         },
         chartOptions: {
           responsive: true
