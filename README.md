@@ -3,4 +3,4 @@ SocialDefi is an app which allows users to keep up to date with changes in the c
 
 ![image](frontend/assets/product screenshot.png) 
 
-![alt text](/frontend/assets/product "Title")
+![alt text](/frontend/assets/product-screenshot.png "Title")
