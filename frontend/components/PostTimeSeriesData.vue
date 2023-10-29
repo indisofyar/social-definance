@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white rounded-lg p-5  mx-auto shadow-md w-[450px]">
         <div class="flex  text-black">
-            <img :src="profileImg" class="w-[60px] h-[60px] rounded-full object-cover">
+            <img :src="image" class="w-[60px] h-[60px] rounded-full object-cover">
             <div class="ml-5">
                 <div class="font-bold text-lg">{{ coin }}</div>
                 <div class="text-sm">@{{ coin }}_updates</div>
@@ -26,7 +26,7 @@ import getTimeSeriesData from '~/utils/GetTimeSeriesData';
 
 export default {
     name: 'PostTimeSeries',
-    props: ['profileImg', 'title', 'user', 'content', 'coin'],
+    props: ['profileImg', 'title', 'user', 'content', 'coin', 'image'],
     data() {
         return {
             btc: null,

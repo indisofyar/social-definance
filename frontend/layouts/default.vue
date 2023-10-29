@@ -1,6 +1,6 @@
 
 <template>
-    <div class="flex bg-gray-100">
+    <div class="flex bg-gray-100 min-h-[100vh]">
         <SideBar />
         <div class="w-full">
             <NavBar></NavBar>

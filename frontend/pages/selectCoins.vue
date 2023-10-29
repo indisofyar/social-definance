@@ -27,12 +27,23 @@ export default {
                 }
             }
             return arr;
+        },
+        selectedImages() {
+            const vm = this;
+            let arr = []
+            for (let i = 0; i < vm.cryptos.length; i++) {
+                if (vm.cryptos[i].selected) {
+                    arr.push(vm.cryptos[i].img)
+                }
+            }
+            return arr;
         }
     },
     methods: {
         goNext() {
             const vm = this;
-            vm.$emit('setCoin', this.arr);
+            vm.$emit('setCoin', this.selectedCoins);
+            vm.$emit('setImages', this.selectedImages);
             vm.$router.replace('/');
         }
     },

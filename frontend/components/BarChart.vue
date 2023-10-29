@@ -15,12 +15,10 @@
   export default {
     name: 'BarChart',
     components: { Bar },
+    props: ['chartData'],
     data() {
       return {
-        chartData: {
-          labels: [ 'September', 'October', 'November' ],
-          datasets: [ {label: 'Profit', data: [1201, 1100, 1400], backgroundColor: '#4a21ef',} ]
-        },
+        
         chartOptions: {
           responsive: true
         }

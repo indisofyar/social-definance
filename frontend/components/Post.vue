@@ -3,7 +3,7 @@
         <div class="flex  text-black relative">
             <img :src="profileImg" class="w-[60px] h-[60px] rounded-full object-cover">
             <div class="ml-5">
-                <div class="font-bold text-lg">{{ title }} <span class="px-2 py-1 bg-[#4a21ef]/20 rounded text-[#4a21ef]/50 uppercase text-xs top-2 right-2 absolute">Automatic update</span></div>
+                <div class="font-bold text-lg">{{ title }} <span class="px-2 py-1 bg-[#4a21ef]/20 rounded text-[#4a21ef]/50 uppercase text-xs top-2 right-2 absolute">P & L report</span></div>
                 <div class="text-sm">{{ user }}</div>
             </div>
 
@@ -12,13 +12,14 @@
             {{ content }}
         </div>
         <div class="mt-2">
-            <BarChart />
+            <BarChart :chart-data="chartData" />
         </div>
     </div>
 </template>
 <script>
 export default {
     name: 'Post',
-    props: ['profileImg', 'title', 'user', 'content']
+
+    props: ['profileImg', 'title', 'user', 'content', 'chartData']
 }
 </script>
